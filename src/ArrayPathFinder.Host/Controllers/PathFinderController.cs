@@ -23,6 +23,11 @@ namespace ArrayPathFinder.Host.Controllers
         [HttpPost("/calculatePath")]
         public ActionResult<ArrayPathCalculationResult> CalculateArrayPath([FromBody] ItemsRequest itemsRequest)
         {
+            if (itemsRequest?.Items == null)
+            {
+                return BadRequest(new { Reason = "BadRequest", Message = "Items cannot be empty." });
+            }
+
             ArrayPathCalculationResult result = _service.CalculatePath(itemsRequest.Items);
 
             return Ok(result);

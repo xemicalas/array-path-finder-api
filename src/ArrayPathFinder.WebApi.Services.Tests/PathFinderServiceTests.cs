@@ -13,8 +13,22 @@ namespace ArrayPathFinder.WebApi.Services.Tests
             _service = new PathCalculationService();
         }
 
+        [Test]
+        [TestCaseSource(nameof(CalculatingPathTestCases))]
+        public void Given_ItemsArray_When_CalculatingPath_Expect_CorrectResult(List<int> items, bool pathExists, List<TraverseStep> path)
+        {
+            ArrayPathCalculationResult calculationResult = _service.CalculatePath(items);
+
+            Assert.That(calculationResult, Is.Not.Null);
+            Assert.That(calculationResult.PathExists, Is.EqualTo(pathExists));
+            CollectionAssert.AreEqual(items, calculationResult.Items);
+            CollectionAssert.AreEqual(path, calculationResult.Path);
+        }
+
         public static IEnumerable<TestCaseData> CalculatingPathTestCases()
         {
+            yield return new TestCaseData(new List<int>(), false, new List<TraverseStep>());
+
             yield return new TestCaseData(new List<int> { 1, 2, 0, 3, 0, 2, 0 }, true, new List<TraverseStep>
             {
                 new TraverseStep
@@ -71,18 +85,6 @@ namespace ArrayPathFinder.WebApi.Services.Tests
                     NextItemPosition = 7
                 }
             });
-        }
-
-        [Test]
-        [TestCaseSource(nameof(CalculatingPathTestCases))]
-        public void Given_ItemsArray_When_CalculatingPath_Expect_CorrectResult(List<int> items, bool pathExists, List<TraverseStep> path)
-        {
-            ArrayPathCalculationResult calculationResult = _service.CalculatePath(items);
-
-            Assert.That(calculationResult, Is.Not.Null);
-            Assert.That(calculationResult.PathExists, Is.EqualTo(pathExists));
-            CollectionAssert.AreEqual(items, calculationResult.Items);
-            CollectionAssert.AreEqual(path, calculationResult.Path);
         }
     }
 }

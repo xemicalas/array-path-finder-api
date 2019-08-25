@@ -8,32 +8,34 @@ namespace ArrayPathFinder.WebApi.Services
         public ArrayPathCalculationResult CalculatePath(List<int> items)
         {
             bool pathExists = false;
-
             List<TraverseStep> path = new List<TraverseStep>();
 
-            int currentItemPosition = 0;
-            while (currentItemPosition != items.Count - 1)
+            if (items.Count > 0)
             {
-                int nextItemPosition = FindNextItemPosition(items, currentItemPosition);
-
-                if (nextItemPosition > currentItemPosition)
+                int currentItemPosition = 0;
+                while (currentItemPosition != items.Count - 1)
                 {
-                    path.Add(new TraverseStep
+                    int nextItemPosition = FindNextItemPosition(items, currentItemPosition);
+
+                    if (nextItemPosition > currentItemPosition)
                     {
-                        ItemPosition = currentItemPosition,
-                        NextItemPosition = nextItemPosition
-                    });
-                    currentItemPosition = nextItemPosition;
+                        path.Add(new TraverseStep
+                        {
+                            ItemPosition = currentItemPosition,
+                            NextItemPosition = nextItemPosition
+                        });
+                        currentItemPosition = nextItemPosition;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
-                else
-                {
-                    break;
-                }
-            }
 
-            if (currentItemPosition == items.Count - 1)
-            {
-                pathExists = true;
+                if (currentItemPosition == items.Count - 1)
+                {
+                    pathExists = true;
+                }
             }
 
             return new ArrayPathCalculationResult
@@ -72,6 +74,5 @@ namespace ArrayPathFinder.WebApi.Services
 
             return newPosition;
         }
-
     }
 }

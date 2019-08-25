@@ -38,7 +38,7 @@ namespace ArrayPathFinder.Host
                 c.IncludeXmlComments(xmlPath);
             });
 
-            services.AddSingleton<IPathCalculationService, PathCalculationService>();
+            services.AddSingleton<IPathCalculationService>(provider => new CachedPathCalculationService(new PathCalculationService()));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
