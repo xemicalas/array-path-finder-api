@@ -34,8 +34,13 @@ namespace ArrayPathFinder.Host
                 });
 
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var contractsXmlFile = "ArrayPathFinder.WebApi.Contracts.xml";
+
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                var contractsXmlPath = Path.Combine(AppContext.BaseDirectory, contractsXmlFile);
+
                 c.IncludeXmlComments(xmlPath);
+                c.IncludeXmlComments(contractsXmlPath);
             });
 
             services.AddSingleton<IPathCalculationService>(provider => new CachedPathCalculationService(new PathCalculationService()));

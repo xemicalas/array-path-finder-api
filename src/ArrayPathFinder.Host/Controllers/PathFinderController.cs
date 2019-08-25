@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ArrayPathFinder.Host.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class PathFinderController : ControllerBase
     {
         private readonly IPathCalculationService _service;
@@ -16,11 +17,11 @@ namespace ArrayPathFinder.Host.Controllers
         }
 
         /// <summary>
-        /// Calculates optimal path of array of items
+        /// Checks whether the end of the array is reachable, calculates optimal path of the array 
         /// </summary>
-        /// <param name="itemsRequest"></param>
+        /// <param name="itemsRequest">Array of items to pass for calculation</param>
         /// <returns></returns>
-        [HttpPost("/calculatePath")]
+        [HttpPost("CalculatePath")]
         public ActionResult<ArrayPathCalculationResult> CalculateArrayPath([FromBody] ItemsRequest itemsRequest)
         {
             if (itemsRequest?.Items == null)
