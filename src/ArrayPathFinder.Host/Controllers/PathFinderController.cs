@@ -1,19 +1,31 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ArrayPathFinder.WebApi.Contracts.Request;
+using ArrayPathFinder.WebApi.Contracts.Response;
+using ArrayPathFinder.WebApi.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ArrayPathFinder.Host.Controllers
 {
     [Route("api/[controller]")]
     public class PathFinderController : ControllerBase
     {
+        private readonly IPathCalculationService _service;
+
+        public PathFinderController(IPathCalculationService service)
+        {
+            _service = service;
+        }
+
         /// <summary>
         /// Calculates optimal path of array of items
         /// </summary>
-        /// <param name="items"></param>
+        /// <param name="itemsRequest"></param>
         /// <returns></returns>
         [HttpPost("/calculatePath")]
-        public IActionResult CalculateArrayPath([FromBody] int[] items)
+        public ActionResult<ArrayPathCalculationResult> CalculateArrayPath([FromBody] ItemsRequest itemsRequest)
         {
-            return Ok(10);
+            ArrayPathCalculationResult result = _service.CalculatePath(itemsRequest.Items);
+
+            return Ok(result);
         }
     }
 }

@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrayPathFinder.Host", "Arr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayPathFinder.WebApi.Services", "ArrayPathFinder.WebApi.Services\ArrayPathFinder.WebApi.Services.csproj", "{6225F603-4653-49DC-94B9-602273ADCB90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayPathFinder.WebApi.Services.Tests", "ArrayPathFinder.WebApi.Services.Tests\ArrayPathFinder.WebApi.Services.Tests.csproj", "{61259E33-16C4-48B2-80AE-7AC8E093F39B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayPathFinder.WebApi.Contracts", "ArrayPathFinder.WebApi.Contracts\ArrayPathFinder.WebApi.Contracts.csproj", "{3677D0D4-FEFD-483B-AB2C-D619C0A192E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{6225F603-4653-49DC-94B9-602273ADCB90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6225F603-4653-49DC-94B9-602273ADCB90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6225F603-4653-49DC-94B9-602273ADCB90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61259E33-16C4-48B2-80AE-7AC8E093F39B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61259E33-16C4-48B2-80AE-7AC8E093F39B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61259E33-16C4-48B2-80AE-7AC8E093F39B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61259E33-16C4-48B2-80AE-7AC8E093F39B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3677D0D4-FEFD-483B-AB2C-D619C0A192E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3677D0D4-FEFD-483B-AB2C-D619C0A192E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3677D0D4-FEFD-483B-AB2C-D619C0A192E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3677D0D4-FEFD-483B-AB2C-D619C0A192E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
