@@ -1,12 +1,19 @@
-﻿using System;
+﻿using System.IO;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
 
 namespace ArrayPathFinder.Host
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            CreateWebHostBuilder(args).Build().Run();
         }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>()
+                .UseUrls("http://localhost:5000/");
     }
 }
