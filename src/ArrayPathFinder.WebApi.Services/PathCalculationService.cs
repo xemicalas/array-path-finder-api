@@ -50,7 +50,6 @@ namespace ArrayPathFinder.WebApi.Services
         {
             int newPosition = currentItemPosition;
             int offsetPosition = currentItemPosition;
-
             int newBiggestItem = 0;
 
             int steps = items[currentItemPosition];

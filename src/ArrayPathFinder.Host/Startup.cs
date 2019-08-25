@@ -25,6 +25,15 @@ namespace ArrayPathFinder.Host
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -55,6 +64,8 @@ namespace ArrayPathFinder.Host
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Array Path Finder API V1");
             });
+
+            app.UseCors("CorsPolicy");
 
             app.UseMvc();
         }

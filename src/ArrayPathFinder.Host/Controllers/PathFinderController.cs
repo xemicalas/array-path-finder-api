@@ -1,10 +1,12 @@
 ﻿using ArrayPathFinder.WebApi.Contracts.Request;
 using ArrayPathFinder.WebApi.Contracts.Response;
 using ArrayPathFinder.WebApi.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ArrayPathFinder.Host.Controllers
 {
+    [EnableCors("CorsPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class PathFinderController : ControllerBase
